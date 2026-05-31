@@ -10,7 +10,7 @@
   font-weight: 500;
   font-size: 26px;
   line-height: 1.5;
-  color: #252525;
+  color: var(--text);
 }
 .header {
   height: 38px;
@@ -25,10 +25,9 @@
   border: 1px solid #6c63ff;
   border-radius: 5px;
 }
-.search:focus-within,
-.filter:focus,
-.dialog input:focus {
-  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.3);
+.dark .search,
+.dark .dialog {
+  border: 1px solid var(--text);
 }
 .search-input {
   flex: 1;
@@ -37,6 +36,10 @@
   font-weight: 500;
   font-size: 16px;
   color: #6c63ff;
+  background-color: var(--bg);
+}
+.dark .search-input {
+  color: var(--text);
 }
 .search-input:focus,
 .dialog input:focus {
@@ -45,6 +48,10 @@
 .search-input::placeholder,
 .dialog input::placeholder {
   color: #c3c1e5;
+}
+.dark .search-input::placeholder,
+.dark .dialog input::placeholder {
+  color: #666666;
 }
 .select-wrapper {
   position: relative;
@@ -63,17 +70,19 @@
   cursor: pointer;
   transition: 0.2s;
 }
-.filter:hover {
+.filter:hover,
+.theme:hover {
   background-color: #534cc2;
 }
-.filter:focus {
+.filter:focus,
+.theme:focus {
   outline: none;
   border-color: #6c63ff;
 }
 .filter option {
   text-transform: none;
   color: #6c63ff;
-  background-color: #f7f7f7;
+  background-color: var(--bg);
 }
 .crt {
   position: absolute;
@@ -89,7 +98,7 @@
   margin-top: 20px;
   font-size: 20px;
   line-height: 1.45;
-  color: #252525;
+  color: var(--text);
 }
 .add {
   height: 50px;
@@ -121,7 +130,7 @@
   width: 500px;
   padding: 18px 30px;
   border-radius: 16px;
-  background-color: #f7f7f7;
+  background-color: var(--bg);
 }
 .dialog input {
   margin-bottom: 128px;
@@ -130,8 +139,13 @@
   border: 1px solid #6c63ff;
   border-radius: 5px;
   color: #6c63ff;
+  background-color: var(--bg);
   font-weight: 500;
   font-size: 16px;
+}
+.dark .dialog input {
+  color: var(--text);
+  border: 1px solid var(--text);
 }
 .dialog-actions {
   display: flex;
@@ -143,7 +157,7 @@
   font-weight: 500;
   font-size: 24px;
   line-height: 1;
-  color: #252525;
+  color: var(--text);
 }
 .dialog-btn {
   height: 38px;
@@ -164,7 +178,7 @@
 }
 .cancel {
   border: 1px solid #6c63ff;
-  background-color: #f7f7f7;
+  background-color: var(--bg);
   color: #6c63ff;
 }
 .cancel:hover {
@@ -177,8 +191,9 @@
   display: flex;
   align-items: center;
   text-align: left;
-  color: #252525;
+  color: var(--text);
   position: relative;
+  cursor: pointer;
 }
 .note::after {
   content: "";
@@ -216,6 +231,12 @@
   gap: 34px;
   flex-direction: column;
 }
+.note .right {
+  display: none;
+}
+.note:hover .right {
+  display: flex;
+}
 .right {
   width: 62px;
   display: flex;
@@ -241,7 +262,8 @@
 }
 .search:focus-within,
 .dialog input:focus,
-.filter:focus {
+.filter:focus,
+.theme:focus {
   box-shadow: 0 0 4px 0 #6c63ff;
 }
 .checkbox {
@@ -278,4 +300,29 @@
 }
 .checkbox:hover .checkmark {
   box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+}
+
+.light {
+  --bg: #f7f7f7;
+  --text: #252525;
+  /* --primary: #6c63ff; */
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text);
+}
+.dark {
+  --bg: #252525;
+  --text: #f7f7f7;
+  /* --primary: #6c63ff; */
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text);
+}
+.theme {
+  background-color: #6c63ff;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
 }
